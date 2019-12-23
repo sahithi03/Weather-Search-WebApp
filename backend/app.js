@@ -16,14 +16,14 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist/hw8')));
 
 app.use('/api/autocomplete',(req,res,next) => {
-  axios.get("https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + req.query.input + "&types=(cities)&language=en&key=AIzaSyBstzeOmbPivbGlJ_39mC4n7SyeOHfALFU")
+  axios.get("https://maps.googleapis.com/maps/api/place/autocomplete/json?input=" + req.query.input + "&types=(cities)&language=en&key=")
     .then((result) => {
       res.json(result.data);
     });
 });
 
 app.use('/api/googleGeocode',(req,res,next) => {
-  axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + req.query.address + "&key=AIzaSyBstzeOmbPivbGlJ_39mC4n7SyeOHfALFU")
+  axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + req.query.address + "&key=")
     .then((result) => {
       res.json(result.data);
     });
@@ -41,7 +41,7 @@ app.use('/forecast/:api/:lat/:lon',(req,res,next) => {
 });
 
 app.use('/cityphotos/customsearch',(req,res,next) => {
-  axios.get("https://www.googleapis.com/customsearch/v1?q=" + req.query.q + "&cx=012025193315868979576:j2tes7uqt1m&imgSize=huge&imgType=news&num=8&searchType=image&key=AIzaSyBstzeOmbPivbGlJ_39mC4n7SyeOHfALFU")
+  axios.get("https://www.googleapis.com/customsearch/v1?q=" + req.query.q + "&cx=&imgSize=huge&imgType=news&num=8&searchType=image&key=")
         .then((result) => {
           res.json(result.data);
         });
@@ -49,7 +49,7 @@ app.use('/cityphotos/customsearch',(req,res,next) => {
 
 
 app.use('/api/customsearch',(req,res,next) => {
-  axios.get("https://www.googleapis.com/customsearch/v1?q=" + req.query.q + "%20State%20Seal&cx=012025193315868979576:j2tes7uqt1m&imgSize=huge&imgType=news&num=1&searchType=image&key=AIzaSyBstzeOmbPivbGlJ_39mC4n7SyeOHfALFU")
+  axios.get("https://www.googleapis.com/customsearch/v1?q=" + req.query.q + "%20State%20Seal&cx=&imgSize=huge&imgType=news&num=1&searchType=image&key=")
         .then((result) => {
           res.json(result.data);
         });

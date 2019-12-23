@@ -118,7 +118,7 @@ export class SearchService {
       this._loading.next(this.loading);
       this.showResults  = false;
       this._showResults.next(this.showResults);
-      const forecast_response = await axios.get('/forecast/45aa47c3d7fb9ce5fe6cbe0bc841aab0/'+this.latLon[0]+"/"+this.latLon[1]);
+      const forecast_response = await axios.get('/forecast//'+this.latLon[0]+"/"+this.latLon[1]);
       this.showResults  = true;
       this._showResults.next(this.showResults);
       this.loading = false;

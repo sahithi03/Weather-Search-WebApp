@@ -1,0 +1,56 @@
+<div class="container justify-content-center d-flex align-items-center">
+    <div class="jumbotron col-sm-10 border border-dark " style="box-shadow: 5px 5px 3px 0px #7D7D7D">
+    <h1 class="text-center pb-4">Weather Search</h1>
+    <form (submit) = "onSubmit(searchform)" #searchform="ngForm" autocomplete="off" >
+    <div class="col-sm-9 offset-sm-1">
+      <div class="form-group row ">
+      <label for="street" class="col-sm-2">Street<span class="required">*</span></label>
+      <div class="col-sm-10">
+        <input type="text" name="street" class="form-control border border-dark " id="street" placeholder="Enter Street Name"   required (change) = "isStreetDisabled()"[(ngModel)]="form.street" #street="ngModel" [disabled]='streetDisableText' autocomplete="disabled">
+        <div [ngStyle]="{'color': '#800000'}"  *ngIf="street.errors && !street.dirty && street.touched ">Please enter a Street</div>
+      </div>
+     </div>
+       <div class="form-group row" >
+         <label class="col-sm-2">City<span class="required">*</span></label>
+         <div class="col-sm-10">
+          <input type="text" class="form-control border border-dark "  placeholder="Enter City Name" (keyup)="getSuggestions($event,searchform)" (change) = "isCityDisabled()"name="city" id="city" [(ngModel)]="form.city" #city="ngModel" required matInput aria-label="Number"  [matAutocomplete]="auto" [disabled]='cityDisableText' autocomplete="disabled" >
+          <div [ngStyle]="{'color': '#800000'}"  *ngIf="city.errors && !city.dirty && city.touched "><p>Please enter a City</p></div>
+          <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let item of suggestions" [value]="item">
+                {{ item }}
+              </mat-option>
+          </mat-autocomplete>
+        </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2 ">
+            <label>State<span class="required">*</span></label>
+            </div>
+            <div class="col-sm-10">
+            <select class = "form-control col-sm-6" name="state" id="state" [formControl] = "selectedOption"  (change) = "isStateDisabled()"ngModel >
+              <option value="" disabled selected>Select State</option>
+              <option *ngFor ="let state of states" [value] = "state.value" > {{ state.name }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="currentLocation" [formControl] = "currentLocation" (change) = "currentLoc()" class="form-check-input">
+          <label class="form-check-label" for="currentLocation"> Current Location</label>
+        </div>
+        
+        <div class="form-group row" >
+            <div class="col-sm-10 d-flex pt-3">
+            <div class="pl-3 pr-3">
+            <button type="submit" name="submitBtn" id="submitBtn" class="btn btn-default border border-dark d-flex justify-content-center bg-white  mr-2 text-muted"[disabled]="submitBtn" ><i class="material-icons">search</i>Search</button>
+            </div>
+            <button type="reset"  (click) = "clear()"class="btn btn-default border border-dark d-flex justify-content-center bg-white text-muted " >
+                <i class="material-icons">clear_all</i>Clear</button>
+            </div>
+        </div>
+
+    </div>
+  </form>
+</div>
+
+</div>
+

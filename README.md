@@ -2,7 +2,7 @@
 This web application was developed as part of course CSCI 571 at USC.
 Working application can be found here- http://weathersearchcsci571.us-east-2.elasticbeanstalk.com
 
-Description- Developed a web page for users to serach for weather information of either the current location or of any location around the world.
+Description- Developed a web page for users to search for weather information of either the current location or of any location around the world.
 Features include - 
 * Viewing current weather temperature along with state seal of the state searched which is generated using google custom search API.
 * Viewing Hourly weather conditions such as (temperature, pressure, humidity, ozone, visibility and wind speed) in graphical format which are displayed by querying the Dark sky API.
